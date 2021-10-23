@@ -27,15 +27,6 @@ IG_PASSWORD=<password>
 IG_PROFILE=<profile_you_want_to_scrape>
 ```
 
-To create table, just type following in the terminal:
-
-```
-python
-from server import db
-db.create_all()
-exit()
-```
-
 ### Requirements
 
 Python3 installed (3.6 or higher) -\*\* [Python](https://www.python.org/)
@@ -64,6 +55,15 @@ Install the required packages into the newly created venv:
 
 ```
 pip install -r requirements.txt
+
+```
+
+Run the following commands to setup the tables in your database:
+
+```
+flask db init
+flask db migrate -m "Initial migration."
+flask db upgrade
 ```
 
 To start the server run:

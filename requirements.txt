@@ -37,3 +37,4 @@ w3lib==1.22.0
 websockets==9.1
 Werkzeug==2.0.2
 zipp==3.6.0
+Flask-Migrate==2.5.3
