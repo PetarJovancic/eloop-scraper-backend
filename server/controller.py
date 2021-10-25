@@ -19,16 +19,21 @@ def fetch_data(username, password, profile):
 
 def post_data(username, password, profile):
     data = fetch_data(username, password, profile)
-    new_profile = Profile(
-                    ig_id = data["identifier"],
-                    username=data['username'],
-                    full_name=data['full_name'],
-                    posts=data['media_count'],
-                    followers=data['followed_by_count'],
-                    following=data['follows_count'],
-                    profile_pic=data['profile_pic_url_hd'])
+    
+    duplicate = db.session.query(Profile).filter(
+        Profile.username == profile).first()
 
-    db.session.add(new_profile)
-    db.session.commit()
+    if not duplicate:
+        new_profile = Profile(
+                        ig_id = data["identifier"],
+                        username=data['username'],
+                        full_name=data['full_name'],
+                        posts=data['media_count'],
+                        followers=data['followed_by_count'],
+                        following=data['follows_count'],
+                        profile_pic=data['profile_pic_url_hd'])
+
+        db.session.add(new_profile)
+        db.session.commit()
 
     return data
