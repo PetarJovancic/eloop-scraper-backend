@@ -1,13 +1,14 @@
 from server.controller import post_data
 from server import app
-import os
+from flask import request
 
 
 @app.route('/profile', methods=['POST'])
 def post_profile():
-    username = os.environ.get('IG_USER')
-    password = os.environ.get('IG_PASSWORD')
-    profile = os.environ.get('IG_PROFILE')
-    result = post_data(username,password, profile)
-
+    data = request.get_json()
+    username = data['body']["username"]
+    password = data['body']["password"]
+    profile = data['body']["profile"]
+    result = post_data(username, password, profile)
+    
     return result

@@ -22,9 +22,6 @@ The app requires an `.env` file with the following variables:
 ```
 DB_URI=postgresql://<username>:<password>@<database_url>:<port>/<database_name>
 SECRET_KEY=<flask_secret_key>
-IG_USER=<user_name>
-IG_PASSWORD=<password>
-IG_PROFILE=<profile_you_want_to_scrape>
 ```
 
 ### Requirements
